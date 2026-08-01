@@ -5,11 +5,7 @@ __global__ void relu_kernel(const float* input, float* output, int N) {
     int thread_id = blockIdx.x * blockDim.x + threadIdx.x;
 
     if (thread_id < N) {
-        if (input[thread_id] > 0) {
-            output[thread_id] = input[thread_id];
-        } else {
-            output[thread_id] = 0;         
-        }
+        output[thread_id] =fmax(input[thread_id], 0.0f);
     }
 }
 
