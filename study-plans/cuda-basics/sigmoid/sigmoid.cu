@@ -6,7 +6,7 @@ __global__ void sigmoid_kernel(const float* input, float* output, int N) {
     int thread_id = blockIdx.x * blockDim.x + threadIdx.x;
 
     if (thread_id < N) {
-        output[thread_id] = 1.0 / (1.0 + std::exp(-input[thread_id]));
+        output[thread_id] = 1.0 / (1.0 + expf(-input[thread_id]));
     }
      
 }
