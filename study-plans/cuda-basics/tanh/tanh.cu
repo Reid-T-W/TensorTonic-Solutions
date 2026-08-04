@@ -7,7 +7,9 @@ __global__ void tanh_kernel(const float* input, float* output, int N) {
 
     float x = input[thread_id];
 
-    output[thread_id] = (__expf(x) - __expf(-x)) / (__expf(x) + __expf(-x));
+    output[thread_id] = tanhf(x);
+    
+    // output[thread_id] = (__expf(x) - __expf(-x)) / (__expf(x) + __expf(-x));
 }
 
 extern "C" void solve(const float* input, float* output, int N) {
