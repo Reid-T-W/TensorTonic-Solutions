@@ -6,11 +6,7 @@ __global__ void leaky_relu_kernel(const float* input, float* output, float alpha
 
     if (thread_id < N) {
         float x = input[thread_id];
-        if ( x >= 0) {
-            output[thread_id] = x;
-        } else {
-            output[thread_id] = x * alpha;
-        }
+        output[thread_id] = fmaxf(x, alpha * x);
     }
 }
 
